@@ -1,0 +1,202 @@
+{
+    /// <summary>
+    /// Класс Rectangle
+    /// </summary>
+    class Rectangle
+    {
+        /// <summary>
+        /// Поле Side1
+        /// </summary>
+        private double Side1;
+        /// <summary>
+        /// Поле Side2
+        /// </summary>
+        private double Side2;
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Rectangle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="side1">1-сторона</param>
+        /// <param name="side2">2-сторона</param>
+        public Rectangle(double side1, double side2)
+        {
+            Side1 = side1;
+            Side2 = side2;
+        }
+
+        /// <summary>
+        /// Метод для вывод площади прямоугольника
+        /// </summary>
+        /// <returns>площадь прямоугольника</returns>
+        public double AreaCalculator()
+        {
+            Side1 = 13;
+            Side2 = 12;
+            double s = Area;
+            Console.WriteLine($"Площадь прямоугольника = {s = Area}");
+            return s = Area;
+        }
+
+        /// <summary>
+        /// Метод для вывода периметра Прямоугольника
+        /// </summary>
+        /// <returns>периметр прямоугольника</returns>
+        public double PerimeterCalculator()
+        {
+            Side1 = 13;
+            Side2 = 12;
+            double p = Perimetr;
+            Console.WriteLine($"Периметр прямоугольника = {p = Perimetr}");
+            return p = Perimetr;
+        }
+
+        /// <summary>
+        /// Свойство Area получающее значение площади
+        /// </summary>
+        public double Area
+        {
+            get
+            {
+                return Math.Sqrt(Side1 * Side2);
+            }
+        }
+
+        /// <summary>
+        /// Свойство Perimetr получающее значение периметра
+        /// </summary>
+        public double Perimetr
+        {
+            get
+            {
+                return Math.Sqrt((Side1 + Side2) * 2);
+            }
+        }
+    }
+}
+
+{
+    class Book
+    {
+        public string numBook;
+        public Book()
+        {
+
+        }
+        public Book(string numbook)
+        {
+            numBook = numbook;
+        }
+        public virtual void Show()
+        {
+            Console.WriteLine($"Книга - №{numBook}");
+        }
+    }
+}
+
+{
+    class Title : Book
+    {
+        public string nametitle;
+
+        public Title()
+        {
+
+        }
+
+        public Title(string numbook,string title)
+            :base(numbook)
+        {
+            nametitle = title;
+        }
+
+        public override void Show()
+        {
+            base.Show();
+            Console.WriteLine($"Название книги: {nametitle}");
+        }
+    }
+}
+
+{
+    class Author : Book
+    {
+        public string nameAuthor;
+        public Author()
+        {
+
+        }
+        public Author(string numbook, string nameauthor)
+            :base(numbook)       
+        {
+            nameAuthor = nameauthor;
+        }
+        public override void Show()
+        {
+            base.Show();
+            Console.WriteLine($"Имя Автора: {nameAuthor}");
+        }
+    }
+}
+
+{
+    class Content : Book
+    {
+        public string content;
+
+        public Content()
+        {
+
+        }
+
+        public Content(string numbook, string Content)
+            :base(numbook)
+        {
+            content = Content;
+        }
+
+        public override void Show()
+        {
+            base.Show();
+            Console.WriteLine($"Контент:");
+            Console.WriteLine($"\n{content}");
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Rectangle rectang = new Rectangle();
+            //Console.WriteLine("Информация по прямоугольнику: ");
+            //rectang.AreaCalculator();
+            //rectang.PerimeterCalculator();
+            Book book1 = new Book();
+            book1.numBook = "№435";
+            Title title = new Title();
+            title.nametitle = "Отцы и дети";
+            Author author = new Author();
+            author.nameAuthor = "Иван Тургенев";
+            Content content = new Content();
+            content.content = "Введение-3 \nГлава-1 \nГлава-2 \nГлава-3 \nГлава-4 \nЗаключение";
+            List<Book> books = new List<Book>();
+            Console.WriteLine("У вас представлен список из нескольких книг.");
+            Console.WriteLine("Вы можете посмотреть данный список, а также добавить в него свою книгу.");
+            Console.WriteLine("1-Просмотреть список \n2-Добавить книгу \n3-удалить книгу \n4-завершить программу");
+
+            Book book = new Book();
+            Console.WriteLine("Введите название книги");
+            book.numBook = Console.ReadLine();
+            Console.ReadKey();
+        }
+    }
+}
