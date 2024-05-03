@@ -176,26 +176,109 @@
     {
         static void Main(string[] args)
         {
+            //1-задание
             //Rectangle rectang = new Rectangle();
             //Console.WriteLine("Информация по прямоугольнику: ");
             //rectang.AreaCalculator();
             //rectang.PerimeterCalculator();
-            Book book1 = new Book();
-            book1.numBook = "№435";
-            Title title = new Title();
-            title.nametitle = "Отцы и дети";
-            Author author = new Author();
-            author.nameAuthor = "Иван Тургенев";
-            Content content = new Content();
-            content.content = "Введение-3 \nГлава-1 \nГлава-2 \nГлава-3 \nГлава-4 \nЗаключение";
-            List<Book> books = new List<Book>();
+
+            //2-Задание
             Console.WriteLine("У вас представлен список из нескольких книг.");
             Console.WriteLine("Вы можете посмотреть данный список, а также добавить в него свою книгу.");
             Console.WriteLine("1-Просмотреть список \n2-Добавить книгу \n3-удалить книгу \n4-завершить программу");
+            Console.WriteLine("Вам представлен ряд книг: ");
+            Console.WriteLine("Вы можете увидеть его, вместе с авторами.");
+            Console.WriteLine("А также добавить свою");
+            bool flag;
 
-            Book book = new Book();
-            Console.WriteLine("Введите название книги");
-            book.numBook = Console.ReadLine();
+            flag = true;
+            while (flag)
+            {
+                Title title = new Title();
+                title.Namebook = "Основы языка C#";
+                Author author = new Author();
+                author.Nameauthor = "Михаил Гаврилов";
+                Content content = new Content();
+                content.Allpt = "Введение 3-стр..., Глава1 6-стр, Глава2 17-стр, Глава3 34-стр, Заключение 105-стр...";
+                Book book = new Book("№435", title, author, content);
+                Title title1 = new Title();
+                title1.Namebook = "Морской бой";
+                Author author1 = new Author();
+                author1.Nameauthor = "Стивен Хиленберг";
+                Content content1 = new Content();
+                content1.Allpt = "Введение 3-стр..., ..............., Заключение 234......";
+                Book book1 = new Book("#2332", title1, author1, content1);
+                Title title2 = new Title();
+                title2.Namebook = "Гарри Потер";
+                Author author2 = new Author();
+                author2.Nameauthor = "Александра Бражникова";
+                Content content2 = new Content();
+                content2.Allpt = "Введение 3-стр..., .............., Заключение 5035........";
+                Book book2 = new Book("233343", title2, author2, content2);
+                List<Book> books = new List<Book>();
+                books.Add(book);
+                books.Add(book1);
+                books.Add(book2);
+
+                Console.WriteLine("Функции: \n1-Посмотреть список \n2-Добавить книгу в список \n3-Удалить книгу из списка \n4-Завершить программу");
+                string choise = Console.ReadLine();
+                switch (choise)
+                {
+                    case "1":
+                        foreach (Book alls in books)
+                        {
+                            if (book == alls)
+                            {
+                                Console.WriteLine("1-ая книга: ");
+                                alls.Show();
+                            }
+
+                            if (book1 == alls)
+                            {
+                                Console.WriteLine("2-ая книга: ");
+                                alls.Show();
+                            }
+
+                            if (book2 == alls)
+                            {
+                                Console.WriteLine("3-ая книга: ");
+                                alls.Show();
+                            }
+                        }
+                        continue;
+
+                    case "2":
+                        Console.WriteLine("Введите название книги: ");
+                        Title title3 = new Title();
+                        title3.Namebook = Console.ReadLine();
+                        Console.WriteLine("Введите автора книги: ");
+                        Author author3 = new Author();
+                        author3.Nameauthor = Console.ReadLine();
+                        Console.WriteLine("Введите Контент: ");
+                        Content content3 = new Content();
+                        content3.Allpt = Console.ReadLine();
+                        Console.WriteLine("Введите номер книги: ");
+                        Book book3 = new Book(Console.ReadLine(), title3, author3, content3);
+                        books.Add(book3);
+                        continue;
+
+                    case "3":
+                        Console.WriteLine("Выберите одну из книг, которую вы хотите удалить: ");
+                        choise = Console.ReadLine();
+                        Book bookdel = books.Find(choise == books);
+                        
+                        if(choise != null)
+                        {
+                            books.RemoveAll(book == choise);
+                        }
+
+                        else
+                        {
+
+                        }
+                        continue;
+                }
+            }
             Console.ReadKey();
         }
     }
