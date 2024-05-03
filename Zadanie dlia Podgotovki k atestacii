@@ -83,18 +83,43 @@
 }
 
 {
+    /// <sumary>
+    /// Класс Book
+    /// </sumary>
     class Book
     {
+        /// <sumary>
+        /// Поле Numbbook
+        /// </sumary>
         public string Numbbook;
+        /// <sumary>
+        /// Поле title от класса Title
+        /// </sumary>
         public Title title;
+        /// <sumary>
+        /// Поле author от класса Author
+        /// </sumary>
         public Author author;
+        /// <sumary>
+        /// Поле content от класса Content
+        /// </sumary>
         public Content content;
 
+        /// <sumary>
+        /// Конструктор без параметров
+        /// </sumary>
         public Book()
         {
 
         }
 
+        /// <summary>
+        /// Конструктор с четырьмя параметрами
+        /// </summary>
+        /// <param name="numbbook">номер-книги</param>
+        /// <param name="title">название</param>
+        /// <param name="author">автор</param>
+        /// <param name="content">контент</param>
         public Book(string numbbook, Title title, Author author, Content content)
         {
             Numbbook = numbbook;
@@ -103,6 +128,9 @@
             this.content = content;
         }
 
+        /// <sumary>
+        /// Метод для вывода информации о книге
+        /// </sumary>
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -116,20 +144,36 @@
 }
 
 {
+    /// <sumary>
+    /// Класс Title
+    /// </sumary>
     class Title
     {
+        /// <sumary>
+        /// Поле Namebook
+        /// </sumary>
         public string Namebook;
 
+        /// <sumary>
+        /// Конструктор без параметров
+        /// </sumary>
         public Title()
         {
            
         }
 
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="namebook">название-книги</param>
         public Title(string namebook)
         {
             Namebook = namebook;
         }
 
+        /// <sumary>
+        /// Метод для вывода названия книги
+        /// </sumary>
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -139,20 +183,36 @@
 }
 
 {
+    /// <sumary>
+    /// Класс Author
+    /// </sumary>
     class Author
     {
+        /// <sumary>
+        /// Поле Nameauthor
+        /// </sumary>
         public string Nameauthor;
 
+        /// <sumary>
+        /// Конструктор без параметров
+        /// </sumary>
         public Author()
         {
 
         }
 
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="nameauthor">автор</param>
         public Author(string nameauthor)
         {
             Nameauthor = nameauthor;
         }
 
+        /// <sumary>
+        /// Метод для вывода информации по автору книги
+        /// </sumary>
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -162,25 +222,245 @@
 }
 
 {
+    /// <sumary>
+    /// Класс Content
+    /// </sumary>
     class Content
     {
+        /// <sumary>
+        /// Поле Allpt
+        /// </sumary>
         public string Allpt;
 
+        /// <sumary>
+        /// Конструктор без параметров
+        /// </sumary>
         public Content()
         {
 
         }
 
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="allpt">контент</param>
         public Content(string allpt)
         {
             Allpt = allpt;
         }
 
+        /// <sumary>
+        /// Метод для вывода информации по контенту
+        /// </sumary>
         public void Show()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"Контент - {Allpt}");
             Console.ResetColor();
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Point
+    /// </summary>
+    class Point
+    {
+        /// <summary>
+        /// Поле x
+        /// </summary>
+        private int x;
+        /// <summary>
+        /// Поле y
+        /// </summary>
+        private int y;
+        /// <summary>
+        /// Поле namepoint
+        /// </summary>
+        private string namepoint;
+
+        /// <summary>
+        /// Свойство X с использованием поля x
+        /// </summary>
+        public int X { get { return x; } }
+        /// <summary>
+        /// Свойство Y с использованием поля y
+        /// </summary>
+        public int Y { get {return y; } }
+        /// <summary>
+        /// Свойство Namepoint с использользованием поля namepoint
+        /// </summary>
+        public string Namepoint { get {return namepoint; } }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="x">точки x1, x2</param>
+        /// <param name="y">точки y1, y2</param>
+        /// <param name="namepoint">название точек</param>
+        public Point(int x, int y, string namepoint)
+        {
+            this.x = x;
+            this.y = y;
+            this.namepoint = namepoint;
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Figure
+    /// </summary>
+    class Figure
+    {
+        /// <summary>
+        /// Параметры считываемые с класса Point с полем points
+        /// </summary>
+        private readonly Point[] points;
+
+        public Figure()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="points">точки</param>
+        public Figure(params Point[] points)
+        {
+            if (points.Length < 3 || points.Length > 5)
+            {
+                throw new ArithmeticException("Фигура имеет от 3 до 5 параметров.");
+            }
+
+            this.points = points;
+        }
+
+        /// <summary>
+        /// Метод для рассчёта длины многоугольника
+        /// </summary>
+        /// <param name="A">точка A</param>
+        /// <param name="B">точка B</param>
+        /// <returns></returns>
+        public double LengthSide(Point A, Point B)
+        {
+            return Math.Sqrt(Math.Pow(B.X - A.X, 2) + Math.Pow(B.Y - A.Y, 2));
+        }
+
+        /// <summary>
+        /// Метод для рассчёта периметра многоугольника
+        /// </summary>
+        public void PerimetrCalculator()
+        {
+            double p = 0;
+            for (int i = 0; i < points.Length; i++)
+            {
+                int nextIndex = (i + 1) % points.Length;
+                p += LengthSide(points[i], points[nextIndex]); 
+            }
+
+            Console.WriteLine($"Периметр фигуры: {p}");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Address
+    /// </summary>
+    class Address
+    {
+        /// <summary>
+        /// Поле index
+        /// </summary>
+        private int index;
+        /// <summary>
+        /// Поле country
+        /// </summary>
+        private string country;
+        /// <summary>
+        /// Поле city
+        /// </summary>
+        private string city;
+        /// <summary>
+        /// Поле street
+        /// </summary>
+        private string street;
+        /// <summary>
+        /// Поле house
+        /// </summary>
+        private int house;
+        /// <summary>
+        /// Поле apartament
+        /// </summary>
+        private int apartament;
+        
+        /// <summary>
+        /// Свойство Index c использованием поля index
+        /// </summary>
+        public int Index { get {return index; } set {value = index; } }
+        
+        /// <summary>
+        /// Свойство Country с использованием поля country
+        /// </summary>
+        public string Country { get {return country; } set {value = country; } }
+        
+        /// <summary>
+        /// Свойство City с использованием поля city
+        /// </summary>
+        public string City { get {return city; } set {value = city; } }
+        
+        /// <summary>
+        /// Свойство Street с использованием поля street
+        /// </summary>
+        public string Street { get {return street; } set {value = street; } }
+        
+        /// <summary>
+        /// Свойство House с использованием поля house
+        /// </summary>
+        public int House { get {return house; } set {value = house; } }
+        
+        /// <summary>
+        /// Свойство Apartament с использованием поля apartament
+        /// </summary>
+        public int Apartament { get {return apartament; } set {value = apartament; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Address()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с шестью параметрами
+        /// </summary>
+        /// <param name="index">индекс</param>
+        /// <param name="country">страна</param>
+        /// <param name="city">город</param>
+        /// <param name="street">улица</param>
+        /// <param name="house">дом</param>
+        /// <param name="apartament">квартира</param>
+        public Address(int index, string country, string city, string street, int house, int apartament)
+        {
+            this.index = index;
+            this.country = country;
+            this.city = city;
+            this.street = street;
+            this.house = house;
+            this.apartament = apartament;
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по адресу
+        /// </summary>
+        public void InfoAddress()
+        {
+            Console.WriteLine("Адрес: ");
+            Console.WriteLine($"Индекс - {Index} \nСтрана - {Country} \nГород - {City} \nУлица - {Street} \nДом - {House} \nКвартира - {Apartament}");
         }
     }
 }
@@ -293,6 +573,64 @@
                         continue;
                 }
             }
+
+            //3-Задание
+            Point A = new Point(0, 0, "A");
+            Point B = new Point(0, 4, "B");
+            Point C = new Point(3, 0, "C");
+
+            Figure triagle = new Figure(A, B, C);
+            triagle.PerimetrCalculator();
+
+            //4-Задание
+            Console.WriteLine("Вы можете увидеть ряды адресов. А также добавить свой.");
+            Console.WriteLine("Ряд адресов: ");
+            Address address = new Address(3200, "Молдова", "Бендеры", "40 лет победы", 35, 54);
+            Address address1 = new Address(3300, "Молдова", "Тирасполь", "Карла 41", 3, 42);
+            Address address2 = new Address(2000, "Молдова", "Кишинёв", "31 August 1989", 15, 135);
+            List<Address> addresses = new List<Address>();
+            addresses.Add(address);
+            addresses.Add(address1);
+            addresses.Add(address2);
+
+            foreach (var addre in addresses)
+            {
+                if (address == addre)
+                {
+                    Console.WriteLine("\n1-ый адрес: ");
+                    addre.InfoAddress();
+                }
+
+                if (address1 == addre)
+                {
+                    Console.WriteLine("\n2-ой адрес: ");
+                    addre.InfoAddress();
+                }
+
+                if (address2 == addre)
+                {
+                    Console.WriteLine("\n3-ий адрес: ");
+                    addre.InfoAddress();
+                }
+            }
+
+            Console.WriteLine("\nВы увидели пример адресов, теперь вы можете указать свой: ");
+            Address address3 = new Address();
+            Console.WriteLine("Введите Индекс: ");
+            address3.Index = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите Страну: ");
+            address3.Country = Console.ReadLine();
+            Console.WriteLine("Введите Город: ");
+            address3.City = Console.ReadLine();
+            Console.WriteLine("Введите Улицу: ");
+            address3.Street = Console.ReadLine();
+            Console.WriteLine("Введите Дом: ");
+            address3.House = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите Квартиру: ");
+            address3.Apartament = int.Parse(Console.ReadLine());
+            Console.WriteLine("\n4-ый адрес: ");
+            address3.InfoAddress();
+            Console.WriteLine("\nБлагодарим вас за ввод адреса, вы можете закрыть программу.");
             Console.ReadKey();
         }
     }
