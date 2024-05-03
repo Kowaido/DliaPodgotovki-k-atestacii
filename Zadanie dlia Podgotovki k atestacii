@@ -85,88 +85,102 @@
 {
     class Book
     {
-        public string numBook;
+        public string Numbbook;
+        public Title title;
+        public Author author;
+        public Content content;
+
         public Book()
         {
 
         }
-        public Book(string numbook)
+
+        public Book(string numbbook, Title title, Author author, Content content)
         {
-            numBook = numbook;
+            Numbbook = numbbook;
+            this.title = title;
+            this.author = author;
+            this.content = content;
         }
-        public virtual void Show()
+
+        public void Show()
         {
-            Console.WriteLine($"Книга - №{numBook}");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Номер книги - {Numbbook}");
+            Console.ResetColor();
+            title.Show();
+            author.Show();
+            content.Show();
         }
     }
 }
 
 {
-    class Title : Book
+    class Title
     {
-        public string nametitle;
+        public string Namebook;
 
         public Title()
         {
-
+           
         }
 
-        public Title(string numbook,string title)
-            :base(numbook)
+        public Title(string namebook)
         {
-            nametitle = title;
+            Namebook = namebook;
         }
 
-        public override void Show()
+        public void Show()
         {
-            base.Show();
-            Console.WriteLine($"Название книги: {nametitle}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Книга - {Namebook}");
         }
     }
 }
 
 {
-    class Author : Book
+    class Author
     {
-        public string nameAuthor;
+        public string Nameauthor;
+
         public Author()
         {
 
         }
-        public Author(string numbook, string nameauthor)
-            :base(numbook)       
+
+        public Author(string nameauthor)
         {
-            nameAuthor = nameauthor;
+            Nameauthor = nameauthor;
         }
-        public override void Show()
+
+        public void Show()
         {
-            base.Show();
-            Console.WriteLine($"Имя Автора: {nameAuthor}");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Автор - {Nameauthor}");
         }
     }
 }
 
 {
-    class Content : Book
+    class Content
     {
-        public string content;
+        public string Allpt;
 
         public Content()
         {
 
         }
 
-        public Content(string numbook, string Content)
-            :base(numbook)
+        public Content(string allpt)
         {
-            content = Content;
+            Allpt = allpt;
         }
 
-        public override void Show()
+        public void Show()
         {
-            base.Show();
-            Console.WriteLine($"Контент:");
-            Console.WriteLine($"\n{content}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"Контент - {Allpt}");
+            Console.ResetColor();
         }
     }
 }
