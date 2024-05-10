@@ -1,0 +1,131 @@
+{
+   static class Triagle
+    {
+        public static double S(double a, double b, double c)
+        {
+            if (a < b + c && b < a + c && c < a + b)
+            {
+                double p = (a + b + c) / 2;
+                return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+            }
+            return 0;
+        }
+    }
+}
+
+{
+    static class MyClass
+    {
+        public static int Sum(int m, int n)
+        {
+            int Sum = 0;
+            for (int i = m; i <= n; i++)
+            {
+                Sum += i;
+            }
+            return Sum;
+        }
+    }
+}
+
+{
+    static class MyClass2
+    {
+        public static double Averanger(int m, int n)
+        {
+            int sum = 0;
+            int count = 0;
+            for (int i = m; i <= n; i++)
+            {
+                sum += i;
+                count++;            
+            }
+            return (double)sum / count;
+        }
+    }
+}
+
+{
+    class Zakaz
+    {
+        string fam;
+        int size;
+        string comfort;
+
+        public string Fam
+        {
+            get { return fam; }
+            set { fam = value; }
+        }
+
+        public int Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
+
+        public string Comfort
+        {
+            get { return comfort; }
+            set { comfort = value; }
+        }
+
+        public Zakaz()
+        {
+
+        }
+
+        public Zakaz(string fam)
+        {
+            Fam = fam;
+        }
+
+        public Zakaz(string fam, int size)
+          :this(fam)
+        {
+            Size = size;
+        }
+
+        public Zakaz(string fam, int size, string comfort)
+          :this(fam, size)
+        {
+            Comfort = comfort;
+        }
+
+        public void Show()
+        {
+            Console.WriteLine($"Фамилия - {fam}, Количество мест в номере - {size}, Комфортность - {comfort}");
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+/// <summary>
+/// 1.Объявляю делегат
+/// </summary>
+/// <param name="a"></param>
+/// <param name="b"></param>
+/// <param name="c"></param>
+/// <returns>площедь треугольника</returns>
+delegate double Message(double a, double b, double c);
+
+/// <summary>
+/// 1.Объявяляю делегат
+/// </summary>
+/// <param name="m"></param>
+/// <param name="n"></param>
+/// <returns>сумму чисел от m до n</returns>
+delegate int Message2(int m, int n);
+
+/// <summary>
+/// 1.Объявляю делегат
+/// </summary>
+/// <param name="m"></param>
+/// <param name="n"></param>
+/// <returns>Среденее арефметическое</returns>
+delegate double Averages(int m, int n);
+
