@@ -100,6 +100,131 @@
 }
 
 {
+    /// <summary>
+    /// Абстрактный класс Vehicle
+    /// </summary>
+    abstract class Vehicle
+    {
+        /// <summary>
+        /// Поле price
+        /// </summary>
+        private double price;
+
+        /// <summary>
+        /// Поле speed
+        /// </summary>
+        private double speed;
+
+        /// <summary>
+        /// Поле dateTime
+        /// </summary>
+        private DateTime dateTime;
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Vehicle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="speed"></param>
+        /// <param name="datetime"></param>
+        public Vehicle(double price, double speed, DateTime datetime)
+        {
+            this.price = price;
+            this.speed = speed;
+            this.dateTime = datetime;
+        }
+
+        /// <summary>
+        /// Свойство Price
+        /// </summary>
+        public double Price { get {return price; } set { price = value; } }
+        
+        /// <summary>
+        /// Свойство Speed
+        /// </summary>
+        public double Speed { get {return speed; } set { speed = value; } }
+        
+        /// <summary>
+        /// Свойство DateTime
+        /// </summary>
+        public DateTime DateTime { get {return dateTime; } set { dateTime = value; } }
+
+        /// <summary>
+        /// Абстрактный метод для информации
+        /// </summary>
+        abstract public void Info(); 
+    }
+}
+
+{
+    /// <summary>
+    /// Статический класс Pattern
+    /// </summary>
+    static class Pattern
+    {
+        /// <summary>
+        /// Хранение данных цветов
+        /// </summary>
+       public enum Colors
+        {
+            Black,
+            Blue,
+            Green,
+            Yellow,
+            Red,
+            Magenta,
+            Cyan,
+            White
+        }
+
+        /// <summary>
+        /// Статический метод Print
+        /// </summary>
+        /// <param name="stroka">строка</param>
+        /// <param name="color">цвет</param>
+        public static void Print(string stroka, int color)
+        {
+            switch ((Colors)color)
+            {
+                case Colors.Black:
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+                case Colors.Blue:
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case Colors.Green:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case Colors.Yellow:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case Colors.Red:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case Colors.Magenta:
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    break;
+                case Colors.Cyan:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    break;
+                case Colors.White:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+            }
+            Console.WriteLine(stroka);
+        }
+    }
+}
+
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -128,4 +253,28 @@ delegate int Message2(int m, int n);
 /// <param name="n"></param>
 /// <returns>Среденее арефметическое</returns>
 delegate double Averages(int m, int n);
+
+
+            Plane plane = new Plane();
+            plane.Price = double.Parse(Console.ReadLine());
+            plane.Speed = double.Parse(Console.ReadLine());
+            plane.DateTime = DateTime.Parse(Console.ReadLine());
+            plane.H = int.Parse(Console.ReadLine());
+            plane.Person = int.Parse(Console.ReadLine());
+            Car car = new Car();
+            Ship ship = new Ship();
+
+            Console.WriteLine("Введите строку: ");
+            string stroka = Console.ReadLine();
+            Console.WriteLine("Введите цвет который вы желаете: ");
+            foreach (Pattern.Colors colors in Enum.GetValues(typeof(Pattern.Colors)))
+            {
+                Console.WriteLine($"{(int)colors} - {colors}");
+            }
+            Console.WriteLine("Введите цифру: ");
+            int numbcolor = int.Parse(Console.ReadLine());
+            Pattern.Print(stroka, numbcolor);
+            Console.ReadLine();
+   }
+}
 
