@@ -1,0 +1,141 @@
+{
+    /// <summary>
+    /// Перечисление пола
+    /// </summary>
+    public enum Genders
+    {
+        Мужской,
+        Женский
+    }
+
+    /// <summary>
+    /// Класс Student
+    /// </summary>
+    class Student
+    {
+        /// <summary>
+        /// Свойство FIO
+        /// </summary>
+        public string FIO { get; set; }
+        
+        /// <summary>
+        /// Свойство Year
+        /// </summary>
+        public int Year { get; set; }
+
+        /// <summary>
+        /// Свойство Gender
+        /// </summary>
+        public Genders Gender { get; set; }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Student()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="fio"></param>
+        /// <param name="year"></param>
+        /// <param name="gender"></param>
+        public Student(string fio, int year, Genders gender)
+        {
+            FIO = fio;
+            Year = year;
+            Gender = gender;
+        }
+
+        /// <summary>
+        /// Метод для ввода информации.
+        /// </summary>
+        public void PrintInfo()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int[] mass = new int[n];
+            for (int i = 0; i < mass[n]; i++)
+            {
+                Console.WriteLine("Введите пол: ");
+                Gender.ToString();
+                if (Gender == Genders.Мужской)
+                {
+                    Genders.Мужской.ToString();
+                }
+
+                else if (Gender == Genders.Женский)
+                {
+                    Genders.Женский.ToString();
+                }
+
+                Console.WriteLine("Введите ФИО: ");
+                FIO = Console.ReadLine();
+                Console.WriteLine("Введите год: ");
+
+                if (i == mass[n])
+                {
+
+                }
+            }
+        }
+
+        /// <summary>
+        /// Метод для вывода списка студентов
+        /// </summary>
+        public static void Info()
+        {
+            Console.WriteLine("Ряд студентов: ");
+            Student student = new Student("Щуровская Александра Григорьевна",2005,Genders.Мужской);
+            Student student1 = new Student("Шандригоз Наталья Николаевна", 2004, Genders.Женский);
+            Student student2 = new Student("Полозюк Даниил Олегович", 2006, Genders.Мужской);
+            Student student3 = new Student("Порван Галина Валентиновна", 2007, Genders.Женский);
+            List<Student> students = new List<Student>();
+
+            students.Add(student);
+            students.Add(student1);
+            students.Add(student2);
+            students.Add(student3);
+
+            foreach (var students1 in students)
+            {
+                Console.WriteLine(students1);
+            }
+        }
+
+        /// <summary>
+        /// Метод для вывода студентов по гендеру
+        /// </summary>
+        public void InfoStudentGender()
+        {
+            if (Gender == Genders.Мужской)
+            {
+                Console.WriteLine("Список мужских: ");
+                Info();
+            }
+
+            else if (Gender == Genders.Женский)
+            {
+                Console.WriteLine("Список женских: ");
+                Info();
+            }
+        }
+    }
+}
+
+{
+    class Program
+    {
+        //1-Задание. Определить тип гендер, со значениями женский мужской, определить класс студента в котором будут реализовываться следующие свойств. 1)ФИО, 2)Год рождения, 3)Гендер для хранения пола студента. Нужно в классе студент, организовать метод в котором вводится информация по n студентам, и.. выводится список студентов, кроме этого необходимо вывести отдельно список юношей, и список девушек.
+        static void Main(string[] args)
+        {
+            Student student = new Student();
+            Console.WriteLine("Вам представлен ряд студентов, вы можете увидеть его: ");
+            Student.Info();
+            Console.WriteLine("Вы увидели ряд студентов, теперь вы можете ввести количество студентов которое вы хотите добавить.");
+            Console.WriteLine("Введите колличество студентов: ");
+            student.PrintInfo();
+        }
+    }
+}
