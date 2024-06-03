@@ -1,0 +1,274 @@
+  class ClassRoom
+    {
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public ClassRoom()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="exclentpupli">отлично-учится</param>
+        public ClassRoom(Pupil exclentpupli)
+        {
+            
+        }
+
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="excelentpupli"></param>
+        /// <param name="goodpupli"></param>
+        public ClassRoom(Pupil excelentpupli, Pupil goodpupli)
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="excelentpupli"></param>
+        /// <param name="goodpupli"></param>
+        /// <param name="badpupli"></param>
+        public ClassRoom(Pupil excelentpupli, Pupil goodpupli, Pupil badpupli)
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pupil"></param>
+        public void Info(Pupil pupil)
+        {
+            Console.WriteLine($"Ученик {pupil.FinalyName}: ");
+            pupil.Study();
+            pupil.Read();
+            pupil.Write();
+            pupil.Relax();
+            Console.WriteLine();
+        }
+    }
+}
+
+    /// <summary>
+    /// Абстрактный класс Pupli
+    /// </summary>
+    abstract class Pupil
+    {
+        /// <summary>
+        /// Свойство FinalyName
+        /// </summary>
+        public string FinalyName { get; set; }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Pupil()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="finalyname">фамилия</param>
+        public Pupil(string finalyname)
+        {
+            FinalyName = finalyname;
+        }
+
+        /// <summary>
+        /// Абстрактный метод Study
+        /// </summary>
+        public abstract void Study();
+
+        /// <summary>
+        /// Абстрактный метод Read
+        /// </summary>
+        public abstract void Read();
+
+        /// <summary>
+        /// Абстрактный метод Write
+        /// </summary>
+        public abstract void Write();
+
+        /// <summary>
+        /// Абстрактный метод Relax
+        /// </summary>
+        public abstract void Relax();
+    }
+}
+
+    /// <summary>
+    /// Класс 
+    /// </summary>
+    class ExcelentPupli : Pupil
+    {
+        public ExcelentPupli()
+        {
+
+        }
+
+        public ExcelentPupli(string finalyname)
+         :base(finalyname)
+        {
+
+        }
+
+        public override void Study()
+        {
+            Console.WriteLine($"{FinalyName} учится отлично!");
+        }
+
+        public override void Read()
+        {
+            Console.WriteLine($"{FinalyName} читает очень быстро!");
+        }
+
+        public override void Write()
+        {
+            Console.WriteLine($"{FinalyName} пишет без ошибок!");
+        }
+
+        public override void Relax()
+        {
+            Console.WriteLine($"{FinalyName} отдыхает, играя в шахматы!");
+        }
+    }
+}
+
+    class GoodPupli : Pupil
+    {
+        public GoodPupli()
+        {
+
+        }
+
+        public GoodPupli(string finalyname)
+        :base(finalyname)
+        {
+
+        }
+
+        public override void Study()
+        {
+            Console.WriteLine($"{FinalyName} учится хорошо!");
+        }
+
+        public override void Read()
+        {
+            Console.WriteLine($"{FinalyName} читает достаточно быстро!");
+        }
+
+        public override void Write()
+        {
+            Console.WriteLine($"{FinalyName} пишет с небольшими ошибками!");
+        }
+
+        public override void Relax()
+        {
+            Console.WriteLine($"{FinalyName} отдыхает, смотря телевизор!");
+        }
+    }
+}
+
+{
+    class BadPupli : Pupil
+    {
+        public BadPupli()
+        {
+
+        }
+
+        public BadPupli(string finalyname)
+        :base(finalyname)
+        {
+
+        }
+
+        public override void Study()
+        {
+            Console.WriteLine($"{FinalyName} учится плохо!");
+        }
+
+        public override void Read()
+        {
+            Console.WriteLine($"{FinalyName} читает очень медлено!");
+        }
+
+        public override void Write()
+        {
+            Console.WriteLine($"{FinalyName} пишет с большим количеством ошибок!");
+        }
+
+        public override void Relax()
+        {
+            Console.WriteLine($"{FinalyName} отдыхает, играя в компьютерные игры!");
+        }
+    }
+}
+
+{
+    abstract class Vechile
+    {
+        private int a;
+        private int b;
+        private int price;
+        private int speed;
+        private int datayear;
+
+        public Vechile()
+        {
+
+        }
+
+        public Vechile(int a, int b, int price, int speed, int datayear)
+        {
+            this.a = a;
+            this.b = b;
+            this.price = price;
+            this.speed = speed;
+            this.datayear = datayear;
+        }
+
+        /// <summary>
+        /// Свойство A
+        /// </summary>
+        public int A { get { return a; } set {a = value; } }
+
+        /// <summary>
+        /// Свойство B
+        /// </summary>
+        public int B { get { return b; } set {b = value; } }
+
+        /// <summary>
+        /// Свойство 
+        /// </summary>
+        public int Price { get {return price; } set {price = value; } }
+        public int Speed { get { return speed; } set {speed = value; } }
+        public int Datayear { get {return datayear; } set { datayear = value; } }
+
+        public abstract void Info();
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Pupil pupil = new ExcelentPupli("Петров");
+            //Pupil pupil1 = new GoodPupli("Иванов");
+            //Pupil pupil2 = new BadPupli("Сидоров");
+            //ClassRoom classRoom = new ClassRoom();
+            //classRoom.Info(pupil);
+            //classRoom.Info(pupil1);
+            //classRoom.Info(pupil2);
+            Console.ReadKey();
+        }
+    }
+}
