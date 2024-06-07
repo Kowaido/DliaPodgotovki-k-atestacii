@@ -257,6 +257,195 @@
 }
 
 {
+    /// <summary>
+    /// Абстрактный класс Vehicle
+    /// </summary>
+    abstract class Vehicle
+    {
+        /// <summary>
+        /// Поле a
+        /// </summary>
+        private double a;
+
+        /// <summary>
+        /// Поле b
+        /// </summary>
+        private double b;
+
+        /// <summary>
+        /// Поле price
+        /// </summary>
+        private int price;
+
+        /// <summary>
+        /// Поле speed
+        /// </summary>
+        private int speed;
+
+        /// <summary>
+        /// Поле datayear
+        /// </summary>
+        private int datayear;
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Vehicle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с пятью параметрами
+        /// </summary>
+        /// <param name="a">координата a</param>
+        /// <param name="b">координата b</param>
+        /// <param name="price">цена</param>
+        /// <param name="speed">скорость</param>
+        /// <param name="datayear">год-издания</param>
+        public Vehicle(double a, double b, int price, int speed, int datayear)
+        {
+            this.a = a;
+            this.b = b;
+            this.price = price;
+            this.speed = speed;
+            this.datayear = datayear;
+        }
+
+        /// <summary>
+        /// Свойство A
+        /// </summary>
+        public double A { get {return a; } set {a = value; } }
+
+        /// <summary>
+        /// Свойство B
+        /// </summary>
+        public double B { get { return b; } set {b = value; } }
+
+        /// <summary>
+        /// Свойство Price
+        /// </summary>
+        public int Price { get {return price; } set {price = value; } }
+
+        /// <summary>
+        /// Свойство Speed
+        /// </summary>
+        public int Speed { get {return speed; } set {speed = value; } }
+
+        /// <summary>
+        /// Свойство Datayear
+        /// </summary>
+        public int Datayear { get {return datayear; } set {datayear = value; } }
+
+        /// <summary>
+        /// Абстрактный метод InfoVehicle
+        /// </summary>
+        public abstract void InfoVehicle();
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Car наследующийся от абстрактного класса Vehicle
+    /// </summary>
+    class Car : Vehicle
+    {
+        /// <summary>
+        /// Конструктор без парамтеров
+        /// </summary>
+        public Car()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с пятью параметрами базавого класса
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="price"></param>
+        /// <param name="speed"></param>
+        /// <param name="datayear"></param>
+        public Car(double a, double b, int price, int speed, int datayear)
+        :base(a, b, price, speed, datayear)
+        {
+
+        }
+
+        /// <summary>
+        /// Переопределённый метод InfoVehicle
+        /// </summary>
+        public override void InfoVehicle()
+        {
+            Console.WriteLine($"Машина Тайота:\n Координата A - {A}\n Координата B - {B}\n Цена - {Price}\n Скорость - {Speed}\n Год-издания - {Datayear}");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Plane наследующийся от абстрактного класса Vehicle
+    /// </summary>
+    class Plane : Vehicle
+    {
+        /// <summary>
+        /// Поле h
+        /// </summary>
+        private int h;
+
+        /// <summary>
+        /// Поле kolv
+        /// </summary>
+        private int kolv;
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Plane()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с двумя параметрами данного класса, и пятью базового класса
+        /// </summary>
+        /// <param name="a">координата a</param>
+        /// <param name="b">координата b</param>
+        /// <param name="price">цена</param>
+        /// <param name="speed">скорость</param>
+        /// <param name="datayear">год-издания</param>
+        /// <param name="h">высота</param>
+        /// <param name="kolv">количество-пассажиров</param>
+        public Plane(double a, double b, int price, int speed, int datayear, int h, int kolv)
+        :base(a, b, price, speed, datayear)
+        {
+            this.h = h;
+            this.kolv = kolv;
+        }
+
+        /// <summary>
+        /// Свойство H
+        /// </summary>
+        public int H { get {return h; } set {h = value; } }
+
+        /// <summary>
+        /// Свойтсво Kolv
+        /// </summary>
+        public int Kolv { get {return kolv; } set {kolv = value; } }
+
+        /// <summary>
+        /// Переопределённый метод InfoVehicle
+        /// </summary>
+        public override void InfoVehicle()
+        {
+            string name = "Юпитер";
+            Console.Write($"Самолёт - {name}\n");
+            Console.Write($"Координата A - {A}\n Координата B - {B}\n Цена - {Price}\n Скорость - {Speed}\n Год-издания - {Datayear}\n Высота - {H}\n Количество пассажиров - {Kolv}");
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -268,6 +457,77 @@
             //classRoom.Info(pupil);
             //classRoom.Info(pupil1);
             //classRoom.Info(pupil2);
+
+            Plane vehicle = new Plane();
+            Ship vehicle1 = new Ship();
+            Car vehicle2 = new Car();
+            while (true)
+            {
+                Console.WriteLine("Вам представлен ряд из трёх транспортных средств.");
+                Console.Write("1)Машина, 2)Самолёт, 3)Корабль.");
+                Console.WriteLine(" Выберите одно из транспортных средств и опишите его.");
+                Console.WriteLine("Однако если не желаете описывать, можете ввести 4)Выход, и программа закроется");
+                string choise = Console.ReadLine();
+                switch (choise.ToLower())
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.Write("Введите координату A: ");
+                        vehicle2.A = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите координату B: ");
+                        vehicle2.B = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите Цену: ");
+                        vehicle2.Price = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Скорость: ");
+                        vehicle2.Speed = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Год-издания: ");
+                        vehicle2.Datayear = int.Parse(Console.ReadLine());
+                        vehicle2.InfoVehicle();
+                        continue;
+
+                    case "2":
+                        Console.Clear();
+                        Console.Write("Введите координату A: ");
+                        vehicle.A = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите координату B: ");
+                        vehicle.B = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите Цену: ");
+                        vehicle.Price = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Скорость: ");
+                        vehicle.Speed = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Год-издания: ");
+                        vehicle.Datayear = int.Parse(Console.ReadLine());
+                        Console.Write("Введите высоту: ");
+                        vehicle.H = int.Parse(Console.ReadLine());
+                        Console.Write("Введите количество-пассажиров: ");
+                        vehicle.Kolv = int.Parse(Console.ReadLine());
+                        vehicle.InfoVehicle();
+                        continue;
+
+                    case "3":
+                        Console.Clear();
+                        Console.Write("Введите координату A: ");
+                        vehicle1.A = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите координату B: ");
+                        vehicle1.B = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Введите Цену: ");
+                        vehicle1.Price = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Скорость: ");
+                        vehicle1.Speed = int.Parse(Console.ReadLine());
+                        Console.Write("Введите Год-издания: ");
+                        vehicle1.Datayear = int.Parse(Console.ReadLine());
+                        Console.Write("Введите количество-пассажиров: ");
+                        vehicle1.Kolv = int.Parse(Console.ReadLine());
+                        Console.Write("Введите название порта: ");
+                        vehicle1.Portname = Console.ReadLine();
+                        vehicle1.InfoVehicle();
+                        continue;
+
+                    case "4":
+                        Console.Clear();
+                        break;
+                }
+                break;
             Console.ReadKey();
         }
     }
