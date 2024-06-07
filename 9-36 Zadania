@@ -446,6 +446,422 @@
 }
 
 {
+    /// <summary>
+    /// Абстрактный класс Tovar
+    /// </summary>
+    abstract class Tovar
+    {
+        private string name;
+        private double price;
+        /// <summary>
+        /// Свойство Name
+        /// </summary>
+        public string Name { get {return name; } set {name = value; } }
+
+        /// <summary>
+        /// Свойство Price
+        /// </summary>
+        public double Price { get {return price; } set {price = value; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Tovar()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="name">название</param>
+        /// <param name="price">цена</param>
+        public Tovar(string name, double price)
+        {
+            Name = name;
+            Price = price;
+        }
+
+        /// <summary>
+        /// Абстрактный метод CalcSum
+        /// </summary>
+        /// <returns>Рассчитывает стоимость</returns>
+        public abstract double CalcSum();
+
+        /// <summary>
+        /// Метод для вывода информации по товару.
+        /// </summary>
+        public void Print()
+        {
+            Console.WriteLine($"Информация по товару - {Name}: \nЦена - {CalcSum()}");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Obuv наследующийся от абстрактного класса Tovar
+    /// </summary>
+    class Obuv : Tovar
+    {
+        /// <summary>
+        /// Поле kolv
+        /// </summary>
+        private int kolv;
+
+        /// <summary>
+        /// Поле razmer
+        /// </summary>
+        private double razmer;
+
+        /// <summary>
+        /// Поле mass
+        /// </summary>
+        private double mass;
+
+        /// <summary>
+        /// Поле color
+        /// </summary>
+        private string color;
+
+        /// <summary>
+        /// Свойство Kolv
+        /// </summary>
+        public int Kolv { get {return kolv; } set {kolv = value; } }
+
+        /// <summary>
+        /// Свойство Razmer
+        /// </summary>
+        public double Razmer 
+        { get {return razmer; } 
+          set 
+          {
+                if (value < 30)
+                {
+                    Console.WriteLine("Это детская обувь.");
+                }
+
+                else if (value < 25)
+                {
+                    Console.WriteLine("Обувь не может быть меньшего размера.");
+                }
+
+                if (value > 30)
+                {
+                    Console.WriteLine("Это обувь обычного размера.");
+                }
+
+                else if(value >= 40)
+                {
+                    Console.WriteLine("Это обувь взрослого размера.");
+                }
+
+                else if (value >= 55 || value <= 60)
+                {
+                    Console.WriteLine("Это максимальные размеры");
+                }
+
+                else
+                {
+                    Console.WriteLine("Вы указали не верное значение");
+                }
+          } 
+        }
+
+        /// <summary>
+        /// Свойство Mass
+        /// </summary>
+        public double Mass { get {return mass; } set {mass = value; } }
+
+        /// <summary>
+        /// Свойство Color
+        /// </summary>
+        public string Color { get {return color; } set {color = value; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Obuv()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами данного класса, и двумя базового класса
+        /// </summary>
+        /// <param name="name">название</param>
+        /// <param name="price">цена</param>
+        /// <param name="kolv">количество</param>
+        /// <param name="razmer">размер</param>
+        /// <param name="mass">масса</param>
+        /// <param name="color">цвет</param>
+        public Obuv(string name, double price, int kolv, double razmer, double mass, string color)
+        :base(name, price)
+        {
+            Kolv = kolv;
+            Razmer = razmer;
+            Mass = mass;
+            Color = color;
+        }
+
+        /// <summary>
+        /// Переопределённый метод CalcSum
+        /// </summary>
+        /// <returns>Расчёт суммы</returns>
+        public override double CalcSum()
+        {
+            int sebest = 100 - Kolv;
+            return Price = Math.Sqrt(sebest+100+40+0.54);
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по товару
+        /// </summary>
+        /// <param name="tovar">товар</param>
+        public void Print(Tovar tovar)
+        {
+            string name = $"Количество - {Kolv}, Размер - {Razmer}, Масса - {Mass}, Цвет - {Color}";
+            tovar.Print();
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Odejda наследующийся от абстрактного класса Tovar
+    /// </summary>
+    class Odejda : Tovar
+    {
+        /// <summary>
+        /// Поле kolv
+        /// </summary>
+        private int kolv;
+
+        /// <summary>
+        /// Поле razmer
+        /// </summary>
+        private double razmer;
+
+        /// <summary>
+        /// Поле mass
+        /// </summary>
+        private double mass;
+
+        /// <summary>
+        /// Поле color
+        /// </summary>
+        private string color;
+
+        /// <summary>
+        /// Свойство Kolv
+        /// </summary>
+        public int Kolv { get { return kolv; } set { kolv = value; } }
+
+        /// <summary>
+        /// Свойство Razmer
+        /// </summary>
+        public double Razmer
+        {
+            get { return razmer; }
+            set
+            {
+                if (value < 30)
+                {
+                    Console.WriteLine("Это детская одежда.");
+                }
+
+                else if (value < 20)
+                {
+                    Console.WriteLine("Это одежда на маленьких.");
+                }
+
+                if (value > 30)
+                {
+                    Console.WriteLine("Это одежда обычного размера.");
+                }
+
+                else if (value >= 50)
+                {
+                    Console.WriteLine("Это одежда взрослого размера.");
+                }
+
+                else if (value >= 65 || value <= 80)
+                {
+                    Console.WriteLine("Это максимальные размеры");
+                }
+
+                else
+                {
+                    Console.WriteLine("Вы указали не верное значение");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Свойство Mass
+        /// </summary>
+        public double Mass { get { return mass; } set { mass = value; } }
+
+        /// <summary>
+        /// Свойство Color
+        /// </summary>
+        public string Color { get { return color; } set { color = value; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Odejda()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами данного класса, и двумя базового класса
+        /// </summary>
+        /// <param name="name">название</param>
+        /// <param name="price">цена</param>
+        /// <param name="kolv">количество</param>
+        /// <param name="razmer">размер</param>
+        /// <param name="mass">масса</param>
+        /// <param name="color">цвет</param>
+        public Odejda(string name, double price, int kolv, double razmer, double mass, string color)
+        : base(name, price)
+        {
+            Kolv = kolv;
+            Razmer = razmer;
+            Mass = mass;
+            Color = color;
+        }
+
+        /// <summary>
+        /// Переопределённый метод CalcSum
+        /// </summary>
+        /// <returns>Расчёт суммы</returns>
+        public override double CalcSum()
+        {
+            int sebest = 100 - Kolv;
+            return Price = Math.Sqrt(sebest + 50% + 14 + 0.32);
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по товару
+        /// </summary>
+        /// <param name="tovar">товар</param>
+        public void Print(Tovar tovar)
+        {
+            tovar.Print();
+            Console.WriteLine($"Количество - {Kolv}, Размер - {Razmer}, Масса - {Mass}, Цвет - {Color}");
+        }
+    }
+}
+
+{
+    class Posuda : Tovar
+    {
+        /// <summary>
+        /// Поле kolv
+        /// </summary>
+        private int kolv;
+
+        /// <summary>
+        /// Поле razmer
+        /// </summary>
+        private double razmer;
+
+        /// <summary>
+        /// Поле mass
+        /// </summary>
+        private double mass;
+
+        /// <summary>
+        /// Поле color
+        /// </summary>
+        private string color;
+
+        /// <summary>
+        /// Свойство Kolv
+        /// </summary>
+        public int Kolv { get { return kolv; } set { kolv = value; } }
+
+        /// <summary>
+        /// Свойство Razmer
+        /// </summary>
+        public double Razmer
+        {
+            get { return razmer; }
+            set
+            {
+                if (value >= 3 || value <= 11)
+                {
+                    Console.WriteLine($"Ваш размер {razmer = value}");
+                }
+
+                else
+                {
+                    Console.WriteLine("Вы указали не верное значение");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Свойство Mass
+        /// </summary>
+        public double Mass { get { return mass; } set { mass = value; } }
+
+        /// <summary>
+        /// Свойство Color
+        /// </summary>
+        public string Color { get { return color; } set { color = value; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Posuda()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами данного класса, и двумя базового класса
+        /// </summary>
+        /// <param name="name">название</param>
+        /// <param name="price">цена</param>
+        /// <param name="kolv">количество</param>
+        /// <param name="razmer">размер</param>
+        /// <param name="mass">масса</param>
+        /// <param name="color">цвет</param>
+        public Posuda(string name, double price, int kolv, double razmer, double mass, string color)
+        : base(name, price)
+        {
+            Kolv = kolv;
+            Razmer = razmer;
+            Mass = mass;
+            Color = color;
+        }
+
+        /// <summary>
+        /// Переопределённый метод CalcSum
+        /// </summary>
+        /// <returns>Расчёт суммы</returns>
+        public override double CalcSum()
+        {
+            int sebest = 100 - Kolv;
+            return Price = Math.Sqrt(sebest + 60% + 30 + 0.37);
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по товару
+        /// </summary>
+        /// <param name="tovar">товар</param>
+        public void Print(Tovar tovar)
+        {
+            tovar.Print();
+            Console.WriteLine($"Количество - {Kolv}, Размер - {Razmer}, Масса - {Mass}, Цвет - {Color}");
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -528,6 +944,70 @@
                         break;
                 }
                 break;
+
+            Obuv obuv = new Obuv();
+            Odejda odejda = new Odejda();
+            Posuda posuda = new Posuda();
+            Tovar tovar = new Obuv();
+            Tovar tovar1 = new Odejda();
+            Tovar tovar2 = new Posuda();
+
+            Console.WriteLine("У вас есть 3 вариации товара: 1)Обувь, 2)Одежда, 3)Посуда.");
+            while (true)
+            {
+                Console.WriteLine("Выберите какой товар хотите указать: ");
+                string choise = Console.ReadLine();
+                switch (choise.ToLower())
+                {
+                    case "обувь":
+                        Console.WriteLine($"Вы выбрали - {choise}");
+                        obuv.Name = choise;
+                        Console.WriteLine("Теперь укажите информацию по нему.");
+                        Console.WriteLine("Введите количество товара: ");
+                        obuv.Kolv = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите размер: ");
+                        obuv.Razmer = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите массу: ");
+                        obuv.Mass = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите цвет: ");
+                        obuv.Color = Console.ReadLine();
+                        obuv.Print(tovar);
+                        continue;
+
+                    case "одежда":
+                        Console.WriteLine($"Вы выбрали - {choise}");
+                        odejda.Name = choise;
+                        Console.WriteLine("Теперь укажите информацию по нему.");
+                        Console.WriteLine("Введите количество товара: ");
+                        odejda.Kolv = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите размер: ");
+                        odejda.Razmer = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите массу: ");
+                        odejda.Mass = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите цвет: ");
+                        odejda.Color = Console.ReadLine();
+                        odejda.Print(tovar1);
+                        continue;
+
+                    case "посуда":
+                        Console.WriteLine($"Вы выбрали - {choise}");
+                        posuda.Name = choise;
+                        Console.WriteLine("Теперь укажите информацию по нему.");
+                        Console.WriteLine("Введите количество товара: ");
+                        posuda.Kolv = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите размер: ");
+                        posuda.Razmer = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите массу: ");
+                        posuda.Mass = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите цвет: ");
+                        posuda.Color = Console.ReadLine();
+                        posuda.Print(tovar2);
+                        continue;
+
+                    default:
+                        Console.WriteLine("Вы указали не верно товар.");
+                        continue;
+                }
             Console.ReadKey();
         }
     }
