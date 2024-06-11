@@ -862,10 +862,128 @@
 }
 
 {
+    /// <summary>
+    /// Абстрактный класс Person
+    /// </summary>
+    abstract class Person
+    {
+        /// <summary>
+        /// Свойство Name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Абстрактный метод SayHello
+        /// </summary>
+        public abstract void SayHello();
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Russian наследующийся от абстрактного класса Person
+    /// </summary>
+    class Russian : Person
+    {
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Russian()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="name"></param>
+        public Russian(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// Переопределённый метод SayHello
+        /// </summary>
+        public override void SayHello()
+        {
+            Console.WriteLine($"{Name}-Привет");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Ukrain наследующийся от абстрактного класса Person
+    /// </summary>
+    class Ukrain : Person
+    {
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Ukrain()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="name"></param>
+        public Ukrain(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// Переопределённый метод SayHello
+        /// </summary>
+        public override void SayHello()
+        {
+            Console.WriteLine($"{Name}-Merhaba");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс American наследующийся от абстрактного класса Person
+    /// </summary>
+    class American : Person
+    {
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public American()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с одним параметром
+        /// </summary>
+        /// <param name="name"></param>
+        public American(string name)
+        {
+            Name = name;
+        }
+
+        /// <summary>
+        /// Переопределённый метод SayHello
+        /// </summary>
+        public override void SayHello()
+        {
+            Console.WriteLine($"{Name}-Hi");
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
         {
+            //1-Задание
             //Pupil pupil = new ExcelentPupli("Петров");
             //Pupil pupil1 = new GoodPupli("Иванов");
             //Pupil pupil2 = new BadPupli("Сидоров");
@@ -874,6 +992,7 @@
             //classRoom.Info(pupil1);
             //classRoom.Info(pupil2);
 
+            //2-Задание
             Plane vehicle = new Plane();
             Ship vehicle1 = new Ship();
             Car vehicle2 = new Car();
@@ -945,6 +1064,7 @@
                 }
                 break;
 
+            //3-Задание
             Obuv obuv = new Obuv();
             Odejda odejda = new Odejda();
             Posuda posuda = new Posuda();
@@ -1008,6 +1128,31 @@
                         Console.WriteLine("Вы указали не верно товар.");
                         continue;
                 }
+
+            //4-Задание
+            Russian russian = new Russian();
+            Ukrain ukrain = new Ukrain();
+            American american = new American();
+            Console.WriteLine("Введите тот язык на котором хотите сказать привествие: ");
+            Console.WriteLine("1)Русский; 2)Украинский; 3)Англиский.");
+            string name = Console.ReadLine();
+            if (name == "Русский")
+            {
+                russian.Name = name;
+                russian.SayHello();
+            }
+
+            else if (name == "Украинский")
+            {
+                ukrain.Name = name;
+                ukrain.SayHello();
+            }
+
+            else if (name == "Англиский")
+            {
+                american.Name = name;
+                american.SayHello();
+            }
             Console.ReadKey();
         }
     }
