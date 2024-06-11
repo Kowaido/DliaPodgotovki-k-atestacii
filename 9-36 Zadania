@@ -907,7 +907,7 @@
         /// </summary>
         public override void SayHello()
         {
-            Console.WriteLine($"{Name}-Привет");
+            Console.WriteLine($"Национальность: {Name}-Привет");
         }
     }
 }
@@ -940,7 +940,7 @@
         /// </summary>
         public override void SayHello()
         {
-            Console.WriteLine($"{Name}-Merhaba");
+            Console.WriteLine($"Национальность: {Name}-Merhaba");
         }
     }
 }
@@ -973,7 +973,7 @@
         /// </summary>
         public override void SayHello()
         {
-            Console.WriteLine($"{Name}-Hi");
+            Console.WriteLine($"Национальность: {Name}-Hi");
         }
     }
 }
@@ -1134,7 +1134,7 @@
             Ukrain ukrain = new Ukrain();
             American american = new American();
             Console.WriteLine("Введите тот язык на котором хотите сказать привествие: ");
-            Console.WriteLine("1)Русский; 2)Украинский; 3)Англиский.");
+            Console.WriteLine("1)Русский; 2)Украинец; 3)Англичанин.");
             string name = Console.ReadLine();
             if (name == "Русский")
             {
@@ -1142,13 +1142,13 @@
                 russian.SayHello();
             }
 
-            else if (name == "Украинский")
+            else if (name == "Украинец")
             {
                 ukrain.Name = name;
                 ukrain.SayHello();
             }
 
-            else if (name == "Англиский")
+            else if (name == "Англичанин")
             {
                 american.Name = name;
                 american.SayHello();
